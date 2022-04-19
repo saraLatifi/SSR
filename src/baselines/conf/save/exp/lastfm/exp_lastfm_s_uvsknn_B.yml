@@ -1,0 +1,24 @@
+type: stream # single|opt|stream|stream_opt
+key: vsknn_B # added to the csv names
+evaluation: evaluation_stream  # evaluation_last|evaluation_last_sequence
+data:
+  type: pickle # if there is no type, the default is csv
+  name: lastfm # added in the end of the csv names
+  folder: ../../datasets/lastfm/raw/
+  prefix: ''
+  candidate: 5
+
+results:
+  folder: results/exp/lastfm/vsknn_B/
+
+metrics:
+- class: accuracy.HitRate
+  length: [20]
+- class: accuracy.MRR
+  length: [20]
+
+algorithms:
+# uvsknn_B-sampling=random-k=100-sample_size=5000-weighting=same-weighting_score=linear-idf_weighting=10-boost_own_sessions=2.7
+- class: knn.s_uvsknn.SUVMContextKNN
+  params: { sampling: 'random', k: 100, sample_size: 5000, weighting: 'same' , weighting_score: 'linear', idf_weighting: 10, boost_own_sessions: 2.7 }
+  key: vsknn_B

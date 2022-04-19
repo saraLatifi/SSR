@@ -1,0 +1,33 @@
+type: stream # single|opt|stream|stream_opt
+key: h_m_sr_vsknn_5_15 # added to the csv names
+evaluation: evaluation_stream  # evaluation_last|evaluation_last_sequence
+data:
+  type: pickle # if there is no type, the default is csv
+  name: gowalla # added in the end of the csv names
+  folder: ../../datasets/gowalla/raw/
+  prefix: ''
+  candidate: 5
+
+results:
+  folder: results/exp/gowalla/hybrid/mixed/sr_B_vsknn_EB/5_15/
+
+metrics:
+- class: accuracy.HitRate
+  length: [20]
+- class: accuracy.MRR
+  length: [20]
+
+algorithms:
+- class: hybrid.s_mixed.SUMixedHybrid
+  params:
+    algorithms:
+    - class: s_usr.SUSequentialRules
+      params: { steps: 11, weighting: 'quadratic', boost_own_sessions: 3.9 }
+      key: sr_B
+    - class: knn.s_uvsknn.SUVMContextKNN
+      params: { sampling: 'random', k: 500, sample_size: 5000, weighting: 'log' , weighting_score: 'div', idf_weighting: False, extend_session_length: 12, boost_own_sessions: 2.7 }
+      key: vsknn_EB
+    fit: True
+  params_var:
+    recomLengths: [[5]] # ex for 3 algorithms: [[5, 5]]
+  key: m_sr_vsknn_5_15

@@ -1,0 +1,33 @@
+type: stream_opt # single|opt|stream|stream_opt
+key: vsknn # added to the csv names
+evaluation: evaluation_stream  # evaluation_last|evaluation_last_sequence
+data:
+  type: pickle # if there is no type, the default is csv
+  name: gowalla # added in the end of the csv names
+  folder: ../../datasets/gowalla/raw/
+  prefix: ''
+
+results:
+  folder: results/opt/gowalla/vsknn/
+
+metrics:
+- class: accuracy.HitRate
+  length: [20]
+- class: accuracy.MRR
+  length: [20]
+
+optimize:
+  class: accuracy.HitRate
+  length: [20]
+  iterations: 100 # optional
+
+algorithms:
+- class: knn.s_uvsknn.SUVMContextKNN
+  params: { sampling: 'random' }
+  params_opt:
+    k: [50,100,500,1000,1500]
+    sample_size: [500,1000,2500,5000,10000]
+    weighting: ['same','div','linear','quadratic','log']
+    weighting_score: ['same','div','linear','quadratic','log']
+    idf_weighting: [False,1,2,5,10]
+  key: vsknn_stream

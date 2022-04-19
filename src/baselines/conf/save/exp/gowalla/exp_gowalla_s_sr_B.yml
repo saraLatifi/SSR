@@ -1,0 +1,24 @@
+type: stream # single|opt|stream|stream_opt
+key: sr_B # added to the csv names
+evaluation: evaluation_stream  # evaluation_last|evaluation_last_sequence
+data:
+  type: pickle # if there is no type, the default is csv
+  name: gowalla # added in the end of the csv names
+  folder: ../../datasets/gowalla/raw/
+  prefix: ''
+  candidate: 5
+
+results:
+  folder: results/exp/gowalla/sr_B/
+
+metrics:
+- class: accuracy.HitRate
+  length: [20]
+- class: accuracy.MRR
+  length: [20]
+
+algorithms:
+# sr_B-steps=11-weighting=quadratic-boost_own_sessions=3.9
+- class: s_usr.SUSequentialRules
+  params: { steps: 11, weighting: 'quadratic', boost_own_sessions: 3.9 }
+  key: sr_B
