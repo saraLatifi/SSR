@@ -10,6 +10,7 @@ Qiu, Ruihong, Hongzhi Yin, Zi Huang, and Tong Chen,
 (<a href="https://github.com/RuihongQiu/GAG">Original Code</a>)
 
 <b>Note:</b> This is the blinded material for the review process. After the publication, we will share them publicly on GitHub.
+<b>Download:</b> You may download all files in one step using the zip file below.
 
 <h2>Datasets</h2>
 <div>
