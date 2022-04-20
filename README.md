@@ -9,7 +9,7 @@ Qiu, Ruihong, Hongzhi Yin, Zi Huang, and Tong Chen,
 "GAG: Global attributed graph neural network for streaming session-based recommendation", SIGIR 2020.
 (<a href="https://github.com/RuihongQiu/GAG">Original Code</a>)
 
-<b>Note:</b> This is the blinded material for the review process. After the publication, we will share them publicly on GitHub.
+<b>Note:</b> This is the blinded material for the review process. After the publication, we will share them publicly on GitHub. <br>
 <b>Download:</b> You may download all files in one step using the provided zip file.
 
 <h2>Datasets</h2>
