@@ -44,24 +44,26 @@ Requirements for running the GAG model:
     <li>Torch</li>
     <li>CUDA 9</li>
 </ul>
-
+<b>Note:</b> for the GAG model, using other versions of CUDA than nine may lead to an exception (incompatible CUDA version).
+ 
 <h2>Installation (Using Linux)</h2>
+
 <ol>
 <li> Download and install Docker (https://www.docker.com/) </li>
-<li> Run the following commands: 
+<li> Download the <b>corresponding</b> Docker image: 
 <ol>
     <li>For non-neural models (VSKNN+, SR+, and Hybrid):<br>
     <code>docker pull recommendersystems/streaming_session_based_cpu:0.1</code></li>
-    <li>For GAG:<br>
+    <li>For the GAG model:<br>
     <code>docker pull recommendersystems/streaming_session_based_gpu:0.1</code></li>
 </ol></li>
 <li> Run the pulled docker image as a container, and map the code directory to the docker container:
 <br> 
 <ol>
-    <li>Using CPU:<br>
-    <code>docker run -t -d --name {CONTAINER_NAME} -v {CODE_DIRECTORY}:/project -w /project  {IMAGE_NAME}</code></li>
-    <li>Using GPU:<br>
-    <code>docker run -t -d --name {CONTAINER_NAME} --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=0 -v {CODE_DIRECTORY}:/project -w /project  {IMAGE_NAME}</code></li>
+    <li>For non-neural models:<br>
+    <code>docker run -t -d --name {CONTAINER_NAME} -v {CODE_DIRECTORY}:/project -w /project  recommendersystems/streaming_session_based_cpu:0.1</code></li>
+    <li>For the GAG model:<br>
+    <code>docker run -t -d --name {CONTAINER_NAME} --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=0 -v {CODE_DIRECTORY}:/project -w /project  recommendersystems/streaming_session_based_gpu:0.1</code></li>
 </ol> 
 </li>
 <li> Execute to the running container:<br>
@@ -69,9 +71,13 @@ Requirements for running the GAG model:
 </ol>
 
 <h2>How to Run It</h2>
+<b>Note:</b> You have to run the codes in the <b>corresponding</b> Docker container.
 <ol>
     <h4>Run optimizations or experiments for non-neural models (VSKNN+, SR+, and Hybrid)</h4>
     <ol>
+        <li>
+        Create folders <b><i>in</i></b> and <b><i>out</i></b> under the folder <i>src/baselines/conf</i>.
+        </li>
         <li>
             Take the related configuration file <b>*.yml</b> from folder <i>src/baselines/conf/save</i>, and
             put it into the folder named <i>src/baselines/conf/in</i>. It is possible to put multiple configure files
