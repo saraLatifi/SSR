@@ -9,9 +9,6 @@ Qiu, Ruihong, Hongzhi Yin, Zi Huang, and Tong Chen,
 "GAG: Global attributed graph neural network for streaming session-based recommendation", SIGIR 2020.
 (<a href="https://github.com/RuihongQiu/GAG">Original Code</a>)
 
-<b>Note:</b> This is the blinded material for the review process. After the publication, we will share them publicly on GitHub. <br>
-<b>Download:</b> You may download all files in one step using the provided zip file.
-
 <h2>Datasets</h2>
 <div>
 We used the pre-processed versions of the <i>Gowalla</i> and <i>Lastfm</i> datasets as shared by the authors of GAG with us. 
@@ -92,7 +89,7 @@ Requirements for running the GAG model:
             </code>
         </li>    
         <li>
-            Results will be displayed and saved to the results folder (that is determined in the configuration file).
+            Results will be displayed and saved to the results folder (that is determined in the configuration file). Please note that you should ignore the first CSV file generated and consider the second to fifth CSV files to reproduce the results reported in the paper.
         </li>
     </ol>
     </li>
